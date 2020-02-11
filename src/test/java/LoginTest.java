@@ -23,7 +23,7 @@ public class LoginTest {
 
     @Test
     public void negativeLoginTest(){
-        webDriver.get("https://www.linkedin.com/");
+        webDriver.get("https://www.linkedin.com");
         userSteps.login("a@b.c", "P@ssword123");
     }
 }
