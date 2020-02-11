@@ -7,6 +7,7 @@ public class UserSteps extends ScenarioSteps {
 
     @Step
     public void login(String userEmail, String userPassword) {
+
         landingPage.login(userEmail, userPassword);
     }
 
