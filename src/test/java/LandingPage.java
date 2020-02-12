@@ -3,7 +3,7 @@ import net.thucydides.core.pages.PageObject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-//@DefaultUrl("https://www.linkedin.com/")
+@DefaultUrl("https://www.linkedin.com/")
 
 public class LandingPage extends PageObject {
 
