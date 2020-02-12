@@ -27,6 +27,7 @@ public class LoginTest {
     @Test
     public void negativeLoginTest(){
         landingPage.open();
+        landingPage.isPageLoaded();
         userSteps.login("a@b.c", "P@ssword123");
     }
 }

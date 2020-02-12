@@ -12,4 +12,8 @@ public class LoginSubmit extends PageObject {
 
     @FindBy(xpath = "//div[@id='error-for-password']")
     private WebElement userPasswordErrorValidationMessage;
+
+    public boolean isPageLoaded () {
+        return loginForm.isDisplayed();
+    }
 }

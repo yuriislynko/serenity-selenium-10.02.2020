@@ -1,5 +1,6 @@
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -16,10 +17,18 @@ public class LandingPage extends PageObject {
     @FindBy(xpath = "//button[@aria-label='i18n_sign-in']")
     private WebElement loginButton;
 
+    public LandingPage (WebDriver webDriver) {
+        super(webDriver);
+    }
+
     public void login(String userEmail, String userPassword){
         userEmailField.sendKeys(userEmail);
         userPasswordField.sendKeys(userPassword);
         loginButton.click();
+    }
+
+    public boolean isPageLoaded () {
+        return loginButton.isDisplayed();
     }
 
 }
