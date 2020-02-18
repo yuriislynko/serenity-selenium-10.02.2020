@@ -10,7 +10,7 @@ public class SearchTest extends BaseTest {
 
     @Before
     public void before() {
-        user.login("", "");
+        user.login("michael.orekh@gmail.com", "Or.ru1999");
     }
 
     @Test

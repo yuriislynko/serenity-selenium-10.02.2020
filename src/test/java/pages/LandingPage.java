@@ -29,8 +29,4 @@ public class LandingPage extends PageObject {
         loginButton.click();
     }
 
-    public boolean isPageLoaded () {
-        return loginButton.isDisplayed();
-    }
-
 }
