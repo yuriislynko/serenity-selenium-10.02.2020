@@ -1,30 +1,38 @@
 package steps;
 
 import net.thucydides.core.annotations.Step;
+import net.thucydides.core.annotations.Steps;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.junit.Assert;
-import pages.HomePage;
-import pages.LandingPage;
-import pages.LoginChallengePage;
+
+import static org.hamcrest.CoreMatchers.is;
 
 public class UserSteps extends ScenarioSteps {
 
-    private LandingPage landingPage;
-    private LoginChallengePage loginChallengePage;
-    private HomePage homePage;
+    @Steps
+    LoginSteps loginSteps;
 
-    @Step
-    public UserSteps login(String userEmail, String userPassword) {
-        landingPage.open();
-        landingPage.login(userEmail, userPassword);
-        waitABit(60000);
-        return this;
+    @Steps
+    HomeSteps homeSteps;
+
+    @Steps
+    SearchSteps searchSteps;
+
+    public LoginSteps auth() {
+        return loginSteps;
+    }
+
+    public HomeSteps homePage() {
+        return homeSteps;
+    }
+
+    public SearchSteps searchPage() {
+        return searchSteps;
     }
 
     @Step
-    public UserSteps validatePageHeader(String expectedMessage) {
-        //String actualMessage = loginChallengePage.element(loginChallengePage.headerMessage).getText();
-        Assert.assertEquals("Wrong header message", expectedMessage, loginChallengePage.getHeaderMessageText());
+    public UserSteps validatePageTitle(String pageTitle) {
+        //Assert.assertThat("Wrong page title.", getDriver().getTitle(), is(pageTitle));
         return this;
     }
 

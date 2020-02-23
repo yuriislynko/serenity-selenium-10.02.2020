@@ -19,9 +19,9 @@ public class LandingPage extends PageObject {
     @FindBy(xpath = "//button[@aria-label='i18n_sign-in']")
     private WebElement loginButton;
 
-    public LandingPage (WebDriver webDriver) {
-        super(webDriver);
-    }
+//    public LandingPage (WebDriver webDriver) {
+//        super(webDriver);
+//    }
 
     public void login(String userEmail, String userPassword){
         userEmailField.sendKeys(userEmail);

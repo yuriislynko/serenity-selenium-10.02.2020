@@ -10,11 +10,22 @@ public class SearchTest extends BaseTest {
 
     @Before
     public void before() {
-        user.login("michael.orekh@gmail.com", "Or.ru1999");
+        user
+                .auth()
+                .login("michael.orekh@gmail.com", "Or.ru1999");
     }
 
     @Test
     public void searchBySearchTermTest() {
+        user
+                .validatePageTitle("")
+                .homePage()
+                .searchFor("HR");
 
+        user
+                .validatePageTitle("")
+                .searchPage()
+                .verifySearchResultsCount()
+                .verifyEachResultContains("HR");
     }
 }
