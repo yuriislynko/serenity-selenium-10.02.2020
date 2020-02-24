@@ -15,8 +15,9 @@ public class BaseTest {
     }
 
     @Managed(driver = "chrome")
-    WebDriver webDriver;
+    WebDriver driver;
 
     @Steps
     UserSteps user;
+
 }

@@ -5,11 +5,13 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+
 @RunWith(SerenityRunner.class)
 public class SearchTest extends BaseTest {
 
     @Before
     public void before() {
+
         user
                 .auth()
                 .login("michael.orekh@gmail.com", "Or.ru1999");
@@ -20,11 +22,11 @@ public class SearchTest extends BaseTest {
         user
                 .validatePageTitle("")
                 .homePage()
-                .searchFor("HR");
-
+                .searchFor("hr");
         user
                 .validatePageTitle("")
                 .searchPage()
-                .verifyEachResultContains("HR");
+                .verifyEachResultContains("hr");
+
     }
 }

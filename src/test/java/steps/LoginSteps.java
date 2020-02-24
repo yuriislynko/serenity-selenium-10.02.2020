@@ -7,7 +7,6 @@ import pages.LandingPage;
 import pages.LoginChallengePage;
 
 public class LoginSteps extends ScenarioSteps {
-
     private LandingPage landingPage;
     private LoginChallengePage loginChallengePage;
 
@@ -15,14 +14,13 @@ public class LoginSteps extends ScenarioSteps {
     public LoginSteps login(String userEmail, String userPassword) {
         landingPage.open();
         landingPage.login(userEmail, userPassword);
-        waitABit(60000);
+        //waitABit(60000);
         return this;
     }
 
     @Step
     public LoginSteps validatePageHeader(String expectedMessage) {
-        //String actualMessage = loginChallengePage.element(loginChallengePage.headerMessage).getText();
-        Assert.assertEquals("Wrong header message", expectedMessage, loginChallengePage.getHeaderMessageText());
+        Assert.assertEquals("Wrong header message.", expectedMessage, loginChallengePage.getErrorMessage());
         return this;
     }
 }

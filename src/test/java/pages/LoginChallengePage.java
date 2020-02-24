@@ -6,10 +6,11 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginChallengePage extends PageObject {
 
-    @FindBy(xpath = "//h1/../p")
-    private WebElement headerMessage;
+    @FindBy (xpath="//h1/../p")
+    private WebElement errorMessage;
 
-    public String getHeaderMessageText() {
-        return headerMessage.getText();
+    public String getErrorMessage (){
+        return errorMessage.getText();
     }
+
 }
