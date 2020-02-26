@@ -1,13 +1,33 @@
 package tests;
 
+import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
 import net.serenitybdd.junit.runners.SerenityRunner;
+import net.thucydides.junit.annotations.TestData;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Arrays;
+import java.util.Collection;
 
-@RunWith(SerenityRunner.class)
+
+@RunWith(SerenityParameterizedRunner.class)
 public class SearchTest extends BaseTest {
+
+    private String searchTerm;
+
+    public SearchTest(String searchTerm) {
+        this.searchTerm = searchTerm;
+    }
+
+    @TestData
+    public static Collection<Object[]> testData(){
+        return Arrays.asList(new Object[][]{
+                {"HR"},
+                {"hr"},
+                {"Human Resources"}
+        });
+    }
 
     @Before
     public void before() {
@@ -22,11 +42,11 @@ public class SearchTest extends BaseTest {
         user
                 .validatePageTitle("")
                 .homePage()
-                .searchFor("hr");
+                .searchFor(searchTerm);
         user
                 .validatePageTitle("")
                 .searchPage()
-                .verifyEachResultContains("hr");
+                .verifyEachResultContains(searchTerm);
 
     }
 }

@@ -2,6 +2,7 @@ package steps;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.hamcrest.CoreMatchers;
 import org.hamcrest.core.Every;
 import org.junit.Assert;
 import pages.SearchPage;
