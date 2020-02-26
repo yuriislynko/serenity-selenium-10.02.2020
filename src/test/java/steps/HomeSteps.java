@@ -5,20 +5,25 @@ import net.thucydides.core.steps.ScenarioSteps;
 import org.junit.Assert;
 import pages.HomePage;
 
-public class HomeSteps extends ScenarioSteps {
+import static org.hamcrest.CoreMatchers.is;
 
+public class HomeSteps extends ScenarioSteps {
     private HomePage homePage;
 
     @Step
-    public HomeSteps validateHomePageIsLoaded() {
-        Assert.assertTrue("Page is not loaded.", homePage.isPageLoaded());
+    public HomeSteps validateHomePageIsLoaded(){
+        Assert.assertThat("Wrong page title", homePage.getTitle(), is("LinkedIn"));
+        Assert.assertTrue("Page is not loaded", homePage.isPageLoaded());
         return this;
     }
+
 
 
     @Step
-    public HomeSteps searchFor(String searchTerm) {
+    public HomeSteps searchFor (String searchTerm){
         homePage.searchFor(searchTerm);
         return this;
+
     }
+
 }

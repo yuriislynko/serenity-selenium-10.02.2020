@@ -1,9 +1,8 @@
 package pages;
 
-import net.thucydides.core.pages.PageObject;
-import org.openqa.selenium.JavascriptExecutor;
+import net.serenitybdd.core.pages.PageObject;
+
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,15 +10,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//@At("https://www.linkedin.com/search/results/all/?keywords=hr")
 public class SearchPage extends PageObject {
-    private WebDriver webDriver;
 
-    @FindBy(xpath = "//li[contains(@class, 'search-result ')]")
+    @FindBy(xpath = "//h3[contains(@class,'search-results__total')]")
+    private WebElement searchResultsTotal;
+
+
+    @FindBy(xpath = "//li[contains(@class,'search-result__occluded-item')]")
     private List<WebElement> searchResults;
 
-    @FindBy(xpath = "//h3[contains(@class, 'search-results__total')]")
-    private WebElement searchResultsTotal;
 
     public boolean isPageLoaded() {
         try {
@@ -28,21 +28,18 @@ public class SearchPage extends PageObject {
         } catch (TimeoutException e) {
             return false;
         }
-
-    }
-
-    public int getSearchResultCount () {
-        return searchResults.size();
     }
 
     public List<String> getSearchResultsList() {
-        List<String> searchResultsList = new ArrayList<String>();
 
+        List<String> searchResultsList = new ArrayList<>();
+
+        // for each WebElement searchResult in searchResults List
         for (WebElement searchResult : searchResults) {
-            ((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView();", searchResult);
-            String searchResultText = searchResult.getText();
-            searchResultsList.add(searchResultText);
+            evaluateJavascript("arguments[0].scrollIntoView(true);", searchResult);
+            searchResultsList.add(searchResult.getText());
         }
         return searchResultsList;
     }
+
 }
