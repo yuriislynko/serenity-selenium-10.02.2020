@@ -31,6 +31,7 @@ public class SuccessfulLoginTest extends BaseTest {
     public void successfulLogin() {
         user
                 .auth()
+                .openLandingPage()
                 .login(userEmail, userPassword);
 
         user

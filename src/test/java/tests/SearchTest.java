@@ -34,11 +34,14 @@ public class SearchTest extends BaseTest {
 
         user
                 .auth()
+                .openLandingPage()
                 .login("michael.orekh@gmail.com", "Or.ru1999");
     }
 
     @Test
     public void searchBySearchTermTest() {
+        String [] relevantResults = {"hr", "HR", "Human Resources", "HUMAN RESOURCES"};
+
         user
                 .validatePageTitle("")
                 .homePage()

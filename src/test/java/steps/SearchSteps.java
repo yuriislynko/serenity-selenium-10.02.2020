@@ -25,4 +25,11 @@ public class SearchSteps extends ScenarioSteps {
         Assert.assertThat("SearchTerm not found.", searchResultsList, Every.everyItem(containsString(searchTerm)));
         return this;
     }
+
+    @Step
+    public SearchSteps verifyEachResultContains(String[] searchTerm) {
+        List<String> searchResultsList = searchPage.getSearchResultsList();
+        //Assert.assertThat("SearchTerm not found.", searchResultsList, Every.everyItem(containsString(searchTerm)));
+        return this;
+    }
 }
