@@ -2,6 +2,7 @@ package pages;
 
 import net.serenitybdd.core.pages.PageObject;
 
+import org.jbehave.core.annotations.Then;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -30,6 +31,7 @@ public class SearchPage extends PageObject {
         }
     }
 
+    @Then("I should see search results which contain searchTerm")
     public List<String> getSearchResultsList() {
 
         List<String> searchResultsList = new ArrayList<>();
