@@ -5,15 +5,17 @@ Meta:
 @smoke
 
 Narrative:
-  In order to find needed information
+  In order to find content in application
   As a regular user
-  I want to be able to search for items containing certain words
+  I want to be able to search by search term
 
 Lifecycle:
 Before:
 Scope: SCENARIO
-Given Home page is already opened
+Given I open Landing page
+When I login with username michael.orekh@gmail.com and password Or.ru1999
 
-Scenario: Searching for certain words
-When I enter a searchTerm into search field and press "Enter"
-Then I should see search results which contain searchTerm
+Scenario: Searching by search term
+Given I should see Home page
+When I search for hr
+Then I should see hr in each result

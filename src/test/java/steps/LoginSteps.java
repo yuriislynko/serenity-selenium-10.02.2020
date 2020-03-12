@@ -19,7 +19,6 @@ public class LoginSteps extends ScenarioSteps {
         return this;
     }
 
-    @Given("Home page is already opened")
     @When("I login with username $userEmail and password $userPassword")
     @Step
     public LoginSteps login(String userEmail, String userPassword) {
